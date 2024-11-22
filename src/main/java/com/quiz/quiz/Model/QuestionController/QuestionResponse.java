@@ -1,14 +1,16 @@
 package com.quiz.quiz.Model.QuestionController;
 
-import org.springframework.stereotype.Service;
-
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Service
+@Getter
+@Setter
 @Builder
 
 public class QuestionResponse {
+
     @NotBlank(message = "Question Should Not Blank")
     private String question;
 

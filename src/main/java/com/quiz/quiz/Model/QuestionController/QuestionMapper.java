@@ -16,7 +16,7 @@ public class QuestionMapper {
                 .answer4(questionRequest.getAnswer4())
                 .correctAnswer(questionRequest.getCorrectAnswer())
                 .category(questionRequest.getCategory())
-                .level(questionRequest.getLevel())
+                .difficultyLevel(questionRequest.getLevel())
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class QuestionMapper {
                 .answer3(questions.getAnswer3())
                 .answer4(questions.getAnswer4())
                 .correctAnswer(questions.getCorrectAnswer())
-                .level(questions.getLevel())
+                .level(questions.getDifficultyLevel())
                 .build();
     }
 

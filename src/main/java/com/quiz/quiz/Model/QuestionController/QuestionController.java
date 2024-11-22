@@ -29,4 +29,11 @@ public class QuestionController {
         return ResponseEntity.ok(questionService.getQuestion(questionId));
     }
 
+    @PostMapping(value = "/upload/{fileName}", consumes = "multipart/form-data")
+    public String importCsvToDb(@RequestBody String entity) {
+        // TODO: process POST request
+
+        return entity;
+    }
+
 }

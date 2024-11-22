@@ -37,6 +37,6 @@ public class Questions extends BaseEntity {
     private String correctAnswer;
 
     private String category;
-    private String level;
+    private String difficultyLevel;
 
 }
