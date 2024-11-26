@@ -41,10 +41,9 @@ public class SecurityConfig {
                         "/configuration/ui",
                         "/configuration/security",
                         "/swagger-ui/**",
-                        // "/api/v1/findAllPatient/**",
-                        "/medicalreport/**",
-                        // "/PersonalInfo/**",
                         "/webjars/**",
+                        "/Question/**",
+
                         "/swagger-ui.html")
                         .permitAll()
                         .anyRequest()

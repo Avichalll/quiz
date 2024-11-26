@@ -26,8 +26,9 @@ public class QuestionService {
 
         Questions question = questionRepo.findById(questionId)
                 .orElseThrow(() -> new EntityNotFoundException("Question Not Availabe with Id : " + questionId));
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getQuestion'");
+        QuestionResponse questionResponse = questionMapper.toQuestionResponse(question);
+        return questionResponse;
+
     }
 
 }

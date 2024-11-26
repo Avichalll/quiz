@@ -31,12 +31,11 @@ public class FileStorageService {
 
     public String saveFile(
             @NotNull MultipartFile sourceFile,
-            @NotNull String patientId,
-            @NotNull String fileType
+            @NotNull String tableName
 
     ) {
 
-        final String fileUploadSubPath = "patient" + File.separator + patientId + File.separator + fileType;
+        final String fileUploadSubPath = "Data" + File.separator + tableName;
         return uploadFile(sourceFile, fileUploadSubPath);
     }
 
@@ -65,6 +64,36 @@ public class FileStorageService {
         return null;
 
     };
+
+    // private String uploadFile(@NotNull MultipartFile sourceFile, @NotNull String
+    // fileUploadSubPath) {
+    // final String finalUploadPath = fileUploadSubPath + File.separator +
+    // fileUploadSubPath;
+    // File targetFolder = new File(finalUploadPath);
+    // if (!targetFolder.exists()) {
+    // boolean folderCreated = targetFolder.mkdirs();
+    // if (!folderCreated) {
+    // log.warn("Folder Not created");
+    // return null;
+    // }
+    // }
+
+    // final String fileExtension =
+    // getFileExtension(sourceFile.getOriginalFilename());
+    // String targetFilePath = finalUploadPath + File.separator +
+    // System.currentTimeMillis() + "." + fileExtension;
+    // Path targePath = Paths.get(targetFilePath);
+    // try {
+    // Files.write(targePath, sourceFile.getBytes());
+    // log.info("file saved at " + targetFilePath);
+    // return targetFilePath;
+
+    // } catch (IOException e) {
+    // log.error("File was not saved", e);
+    // }
+    // return null;
+
+    // };
 
     private String getFileExtension(String fileName) {
 

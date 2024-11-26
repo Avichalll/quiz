@@ -63,8 +63,11 @@ public class BatchConfig {
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("question", "answer1", "answer2", "answer3", "answer4", "correct_answer", "category",
-                "difficulty_level");
+        // lineTokenizer.setNames("question", "answer1", "answer2", "answer3",
+        // "answer4", "correctAnswer", "category",
+        // "difficultyLevel");
+        lineTokenizer.setNames("question", "answer1", "answer2", "answer3", "answer4", "correctAnswer", "category",
+                "difficultyLevel");
         BeanWrapperFieldSetMapper<Questions> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(Questions.class);
         lineMapper.setLineTokenizer(lineTokenizer);
