@@ -49,7 +49,6 @@ public class BatchConfig {
         itemReader.setLinesToSkip(1);
         itemReader.setStrict(false);
         itemReader.setLineMapper(lineMapper());
-
         return itemReader;
     }
 
@@ -63,9 +62,7 @@ public class BatchConfig {
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        // lineTokenizer.setNames("question", "answer1", "answer2", "answer3",
-        // "answer4", "correctAnswer", "category",
-        // "difficultyLevel");
+
         lineTokenizer.setNames("question", "answer1", "answer2", "answer3", "answer4", "correctAnswer", "category",
                 "difficultyLevel");
         BeanWrapperFieldSetMapper<Questions> fieldSetMapper = new BeanWrapperFieldSetMapper<>();

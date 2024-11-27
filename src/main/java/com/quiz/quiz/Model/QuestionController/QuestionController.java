@@ -52,16 +52,8 @@ public class QuestionController {
         return ResponseEntity.ok(questionService.getQuestion(questionId));
     }
 
-    // @PostMapping(value = "/upload/{fileName}", consumes = "multipart/form-data")
-    // public String importCsvToDb(@RequestBody String entity) {
-    // // TODO: process POST request
-
-    // return entity;
-    // }
     @PostMapping(value = "/upload", consumes = "multipart/form-data")
     public String importCsvToDBJob(@RequestParam("file") MultipartFile file) {
-
-        // fileStorageService.saveFile(file, "Student");
 
         FilesDetails filesDetails = new FilesDetails();
 
@@ -85,8 +77,12 @@ public class QuestionController {
             e.printStackTrace();
 
         }
-
         return "saved";
+    }
+
+    @GetMapping("/attempQuiz")
+    public String getQuizQuestion(@RequestParam(required = false) String category) {
+        return new String();
     }
 
 }
