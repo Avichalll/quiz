@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.quiz.quiz.File.FileStorageService;
 import com.quiz.quiz.File.FilesDetails;
 import com.quiz.quiz.File.FilesRepository;
+import com.quiz.quiz.common.PageResponse;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -81,8 +82,16 @@ public class QuestionController {
     }
 
     @GetMapping("/attempQuiz")
-    public String getQuizQuestion(@RequestParam(required = false) String category) {
-        return new String();
+    public ResponseEntity<PageResponse<QuestionResponse>> getQuizQuestion(
+
+            @RequestParam(name = "category", required = false) String category,
+            @RequestParam(name = "difficultyLevel", required = false) String difficultyLevel,
+            @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+            @RequestParam(name = "size", defaultValue = "10", required = false) int size
+
+    ) {
+
+        return ResponseEntity.ok(questionService.getQuizQuestion(category, difficultyLevel, page, size));
     }
 
 }
