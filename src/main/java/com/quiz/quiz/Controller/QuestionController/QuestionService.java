@@ -1,4 +1,4 @@
-package com.quiz.quiz.Model.QuestionController;
+package com.quiz.quiz.Controller.QuestionController;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,9 +46,11 @@ public class QuestionService {
         if (category != null) {
             spec = spec.and(QuestionSpecification.withCategory(category));
         }
+
         if (difficultyLevel != null) {
             spec = spec.and(QuestionSpecification.withDifficultyLevel(difficultyLevel));
         }
+
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<Questions> questions = questionRepo.findAll(spec, pageable);
 
@@ -64,6 +66,11 @@ public class QuestionService {
                 questions.isFirst(),
                 questions.isLast());
 
+    }
+
+    public String deleteAllQuestion() {
+        questionRepo.deleteAll();
+        return "deleted";
     }
 
 }

@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.quiz.quiz.Email.EmailService;
 import com.quiz.quiz.Role.Role;
 import com.quiz.quiz.Role.RoleRepository;
 import com.quiz.quiz.Role.URole;
@@ -66,6 +67,8 @@ public class AuthenticationService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtService jwtService;
+
+    private EmailService mailSender;
 
     private final OkHttpClient client = new OkHttpClient();
 
@@ -126,10 +129,24 @@ public class AuthenticationService {
         return codeBuilder.toString();
     }
 
-    private void sendValidationEmail(User user) throws MessagingException, IOException {
+    private void sendValidationEmail(User user) throws MessagingException,
+            IOException {
         String otp = generateAndSaveActivationToken(user);
         sendSms(otp, user.getContactNumber());
     }
+
+    // private void sendValidationEmail(User user) throws MessagingException {
+
+    // String newToken = generateAndSaveActivationToken(user);
+    // mailSender.sendEmail(
+    // user.getEmail(),
+    // user.getFullName(),
+    // EmailTemplateName.ACTIVATE_ACCOUNT,
+    // activationUrl,
+    // newToken,
+    // "Account Activation");
+
+    // }
 
     public void sendSms(String otp, String email) throws IOException {
         String authKey = "8352f3d95c43bde89bf39a38c37685a";

@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.task.SyncTaskExecutor;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.dao.CannotAcquireLockException;
 import org.springframework.retry.policy.SimpleRetryPolicy;
@@ -111,9 +111,16 @@ public class BatchConfig {
 
     // ! till now i send data in synchornous mode;
 
+    // @Bean
+    // public TaskExecutor taskExecutor() {
+    // return new SyncTaskExecutor(); // Synchronous execution
+    // }
+
     @Bean
     public TaskExecutor taskExecutor() {
-        return new SyncTaskExecutor(); // Synchronous execution
+        SimpleAsyncTaskExecutor asyncTaskExecutor = new SimpleAsyncTaskExecutor();
+        asyncTaskExecutor.setConcurrencyLimit(500);
+        return asyncTaskExecutor;
     }
 
 }

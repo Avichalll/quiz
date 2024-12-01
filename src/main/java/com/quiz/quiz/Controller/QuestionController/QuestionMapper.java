@@ -1,4 +1,4 @@
-package com.quiz.quiz.Model.QuestionController;
+package com.quiz.quiz.Controller.QuestionController;
 
 import org.springframework.stereotype.Service;
 
