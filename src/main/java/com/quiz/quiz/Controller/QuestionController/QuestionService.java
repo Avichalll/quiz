@@ -54,7 +54,7 @@ public class QuestionService {
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<Questions> questions = questionRepo.findAll(spec, pageable);
 
-        List<QuestionResponse> questionResponse = questions.stream().map(questionMapper::toQuestionResponse)
+        List<QuestionResponse> questionResponse = questions.stream().limit(20).map(questionMapper::toQuestionResponse)
                 .collect(Collectors.toList());
 
         return new PageResponse<>(

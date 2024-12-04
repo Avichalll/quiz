@@ -81,7 +81,7 @@ public class QuestionController {
         return "saved";
     }
 
-    @GetMapping("/attempQuiz")
+    @GetMapping("/attemptQuiz")
     public ResponseEntity<PageResponse<QuestionResponse>> getQuizQuestion(
             @RequestParam(name = "category", required = false) String category,
             @RequestParam(name = "difficultyLevel", required = false) String difficultyLevel,
